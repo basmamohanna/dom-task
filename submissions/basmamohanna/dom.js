@@ -49,8 +49,12 @@ console.log('Is first paragraph a descendant of the second?',
 /* Twist:
 Can you find any unexpected text nodes in the DOM structure? Log them and explain their origin. */
 section.childNodes.forEach(node => {
-   if(node.nodeType ===3) { // if nodeType returns 3 means this node ia is text node
-      console.log('unexpected text node found:', node)
+   if(node.nodeType === 3) { // if nodeType returns 3 means this node is a text node
+      // Check if text contains non-whitespace characters
+      if(node.textContent.trim().length > 0){
+         console.log('unexpected text node found:', node);
+         console.log('Content:', `"${node.textContent}"`);
+      }
    }
 })           
 
